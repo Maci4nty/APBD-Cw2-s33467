@@ -61,4 +61,8 @@ if (rentCam != null)
     Console.WriteLine($"Status kamery po zwrocie: {cam.Status}");
 }
 
+rentalServ.ShowALl();
+rentalServ.ShowUserRentals(stud);
+rentalServ.ShowFinal();
+
 
