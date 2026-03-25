@@ -10,7 +10,7 @@ public class User
     public string LastName { get; set; }
     public UserType Type { get; set; }
 
-    public User(Guid id, string firstName, string lastName, UserType type)
+    public User(string firstName, string lastName, UserType type)
     {
         Id = Guid.NewGuid();
         FirstName = firstName;
