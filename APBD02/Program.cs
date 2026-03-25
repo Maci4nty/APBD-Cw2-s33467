@@ -23,6 +23,7 @@ rentalServ.AddEquipment(laptop);
 Console.WriteLine("---Wypożyczalnia---");
 
 Rental rentCam = null;
+Rental rentLap = null;
 
 try
 {
@@ -31,7 +32,7 @@ try
     Console.WriteLine("Udane wypożyczenie");
 
     Console.WriteLine("Próba wypożyczenia MacBooka");
-    rentalServ.RentEquipment(stud, laptop, 4);
+    rentLap = rentalServ.RentEquipment(stud, laptop, 4);
     Console.WriteLine("Udane wypożyczenie");
 
     Console.WriteLine("Próba wypożyczenia projektora");
@@ -61,8 +62,25 @@ if (rentCam != null)
     Console.WriteLine($"Status kamery po zwrocie: {cam.Status}");
 }
 
+Console.WriteLine("Oznaczenie sprzętu jako niedostępnego");
+rentalServ.SetUnavailable(projector);
+
+Console.WriteLine("Zwrot w terminie");
+rentalServ.ReturnEquipment(rentLap, laptop);
+Console.WriteLine($"Laptop zwrócony w terminie. Kara: {rentLap.AdditionalCharges} zł");
+
 rentalServ.ShowALl();
+Console.WriteLine();
+
 rentalServ.ShowUserRentals(stud);
+Console.WriteLine();
+
+rentalServ.ShowAvailable();
+Console.WriteLine();
+
+rentalServ.ShowExpiredRentals();
+Console.WriteLine();
+
 rentalServ.ShowFinal();
 
 
