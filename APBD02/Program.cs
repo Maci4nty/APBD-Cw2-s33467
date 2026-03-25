@@ -19,3 +19,28 @@ Projector projector = new Projector("XGIMI TITAN2", 10000, "1920 x 1200");
 rentalServ.AddEquipment(projector);
 rentalServ.AddEquipment(cam);
 rentalServ.AddEquipment(laptop);
+
+Console.WriteLine("---Wypożyczalnia---");
+
+try
+{
+    Console.WriteLine("Próba wypożyczenia kamery");
+    rentalServ.RentEquipment(stud, cam, 7);
+    Console.WriteLine("Udane wypożyczenie");
+
+    Console.WriteLine("Próba wypożyczenia MacBooka");
+    rentalServ.RentEquipment(stud, laptop, 4);
+    Console.WriteLine("Udane wypożyczenie");
+
+    Console.WriteLine("Próba wypożyczenia projektora");
+    rentalServ.RentEquipment(stud, projector, 1);
+    Console.WriteLine("Nieudane wypożyczenie");
+}
+catch (UserLimitExceededException e)
+{
+    Console.WriteLine(e.Message);
+}
+catch (EquipmentUnavailableException e)
+{
+    Console.WriteLine(e.Message);
+}
