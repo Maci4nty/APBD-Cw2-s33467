@@ -138,8 +138,8 @@ public class RentalService
         }
         
         Console.WriteLine("Finalny raport");
-        Console.WriteLine($"Zarjestrowany sprzęt: {equipments.Count}");
-        Console.WriteLine($"Zarjestrowany użytkownicy: {users.Count}");
+        Console.WriteLine($"Zarejestrowany sprzęt: {equipments.Count}");
+        Console.WriteLine($"Zarejestrowani użytkownicy: {users.Count}");
         Console.WriteLine($"Aktualnie wypożyczone: {total}");
     }
 }
