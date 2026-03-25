@@ -22,7 +22,7 @@ public class RentalService
         equipments.Add(equipment);
     }
 
-    public void RentEquipment(User usr, Equipment eq, int days)
+    public Rental RentEquipment(User usr, Equipment eq, int days)
     {
         int count = 0;
         foreach (Rental rent in rentals)
@@ -54,6 +54,8 @@ public class RentalService
         eq.Status = EquipmentStatus.Rented;
         Rental newRental = new Rental(usr, eq, days);
         rentals.Add(newRental);
+        
+        return newRental;
     }
 
     public void ReturnEquipment(Rental rental, Equipment eq)
