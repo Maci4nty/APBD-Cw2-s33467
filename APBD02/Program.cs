@@ -22,10 +22,12 @@ rentalServ.AddEquipment(laptop);
 
 Console.WriteLine("---Wypożyczalnia---");
 
+Rental rentCam = null;
+
 try
 {
     Console.WriteLine("Próba wypożyczenia kamery");
-    rentalServ.RentEquipment(stud, cam, 7);
+    rentCam = rentalServ.RentEquipment(stud, cam, 7);
     Console.WriteLine("Udane wypożyczenie");
 
     Console.WriteLine("Próba wypożyczenia MacBooka");
@@ -44,3 +46,19 @@ catch (EquipmentUnavailableException e)
 {
     Console.WriteLine(e.Message);
 }
+
+Console.WriteLine("---Test zwrotu i kar---");
+
+if (rentCam != null)
+{
+    rentCam.ReturnDate = DateTime.Now.AddMonths(-10);
+    Console.WriteLine($"Planowany zwrot: {rentCam.ReturnDate.ToShortDateString()}");
+    
+    rentalServ.ReturnEquipment(rentCam, cam);
+    
+    Console.WriteLine($"Faktyczny zwrot:  {rentCam.ActualReturnDate?.ToShortDateString()}");
+    Console.WriteLine($"Została naliczona kara w wysokości: {rentCam.AdditionalCharges} zł");
+    Console.WriteLine($"Status kamery po zwrocie: {cam.Status}");
+}
+
+
